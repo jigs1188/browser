@@ -1,0 +1,11 @@
+{
+    "manifest_version": 1,
+    "name": "Word Counter",
+    "version": "0.1.0",
+    "description": "Displays a floating word count for any webpage",
+    "matches": ["*://*/*"],
+    "scripts": ["content.js"],
+    "styles": [],
+    "permissions": [],
+    "run_at": "document_end"
+}

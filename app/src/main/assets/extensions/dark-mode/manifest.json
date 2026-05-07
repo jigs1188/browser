@@ -1,0 +1,11 @@
+{
+    "manifest_version": 1,
+    "name": "Dark Mode",
+    "version": "0.1.0",
+    "description": "Applies a dark theme to any webpage",
+    "matches": ["*://*/*"],
+    "scripts": ["content.js"],
+    "styles": ["dark.css"],
+    "permissions": ["storage"],
+    "run_at": "document_end"
+}

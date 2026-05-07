@@ -1,0 +1,11 @@
+{
+    "manifest_version": 1,
+    "name": "AI Page Assistant",
+    "version": "0.1.0",
+    "description": "Adds AI-powered summarize and explain buttons to any webpage",
+    "matches": ["*://*/*"],
+    "scripts": ["content.js"],
+    "styles": [],
+    "permissions": ["ai"],
+    "run_at": "document_end"
+}

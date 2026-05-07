@@ -1,0 +1,59 @@
+/* Dark Mode for MER Browser */
+/* Applied via CSS injection — no JS needed for basic dark theme */
+
+html.mer-dark-mode,
+html.mer-dark-mode body {
+    background-color: #1a1a2e !important;
+    color: #e0e0e0 !important;
+}
+
+html.mer-dark-mode a {
+    color: #82b1ff !important;
+}
+
+html.mer-dark-mode img {
+    opacity: 0.85;
+}
+
+html.mer-dark-mode input,
+html.mer-dark-mode textarea,
+html.mer-dark-mode select {
+    background-color: #16213e !important;
+    color: #e0e0e0 !important;
+    border-color: #0f3460 !important;
+}
+
+html.mer-dark-mode div,
+html.mer-dark-mode section,
+html.mer-dark-mode article,
+html.mer-dark-mode header,
+html.mer-dark-mode footer,
+html.mer-dark-mode nav,
+html.mer-dark-mode main,
+html.mer-dark-mode aside {
+    background-color: transparent !important;
+    color: #e0e0e0 !important;
+}
+
+html.mer-dark-mode h1,
+html.mer-dark-mode h2,
+html.mer-dark-mode h3,
+html.mer-dark-mode h4,
+html.mer-dark-mode h5,
+html.mer-dark-mode h6 {
+    color: #f0f0f0 !important;
+}
+
+html.mer-dark-mode table,
+html.mer-dark-mode th,
+html.mer-dark-mode td {
+    border-color: #333 !important;
+    background-color: transparent !important;
+    color: #e0e0e0 !important;
+}
+
+html.mer-dark-mode pre,
+html.mer-dark-mode code {
+    background-color: #0d1117 !important;
+    color: #c9d1d9 !important;
+}

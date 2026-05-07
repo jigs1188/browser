@@ -1,0 +1,33 @@
+# .gitignore for MER Android project
+
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Android Studio
+*.iml
+.idea/
+local.properties
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Kotlin
+*.class
+
+# APK/Bundle
+*.apk
+*.aab
+*.ap_
+
+# Crashlytics
+crashlytics.properties
+crashlytics-build.properties
+fabric.properties
+
+# Temp
+*.tmp
+*.bak
+*.swp
