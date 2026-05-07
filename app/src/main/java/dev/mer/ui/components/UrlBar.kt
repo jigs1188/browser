@@ -19,6 +19,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material.icons.filled.AutoAwesome
+import androidx.compose.material.icons.filled.Bookmark
+import androidx.compose.material.icons.filled.BookmarkBorder
 import androidx.compose.material.icons.filled.Extension
 import androidx.compose.material.icons.filled.History
 import androidx.compose.material.icons.filled.Lock
@@ -71,6 +73,8 @@ fun UrlBar(
     onAiClick: () -> Unit,
     onSettingsClick: () -> Unit,
     onHistoryClick: () -> Unit,
+    onBookmarksClick: () -> Unit,
+    onAddBookmark: (String, String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     val focusManager = LocalFocusManager.current
@@ -168,6 +172,21 @@ fun UrlBar(
                         }
                     )
                 }
+
+                // Add Bookmark button inside URL bar
+                if (urlText.isNotBlank() && !urlText.startsWith("about:") && !urlText.startsWith("file://")) {
+                    IconButton(
+                        onClick = { onAddBookmark(urlText, "") },
+                        modifier = Modifier.size(28.dp)
+                    ) {
+                        Icon(
+                            Icons.Default.BookmarkBorder,
+                            contentDescription = "Add Bookmark",
+                            tint = TextMuted,
+                            modifier = Modifier.size(16.dp)
+                        )
+                    }
+                }
             }
 
             // Refresh
@@ -254,6 +273,24 @@ fun UrlBar(
                         onClick = {
                             showMenu = false
                             onHistoryClick()
+                        }
+                    )
+                    DropdownMenuItem(
+                        text = {
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Icon(
+                                    Icons.Default.Bookmark,
+                                    contentDescription = null,
+                                    tint = TextMuted,
+                                    modifier = Modifier.size(18.dp)
+                                )
+                                Spacer(modifier = Modifier.width(10.dp))
+                                Text("Bookmarks", color = TextPrimary)
+                            }
+                        },
+                        onClick = {
+                            showMenu = false
+                            onBookmarksClick()
                         }
                     )
                     DropdownMenuItem(

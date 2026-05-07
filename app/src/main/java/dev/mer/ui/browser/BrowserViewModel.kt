@@ -7,6 +7,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.mer.ai.AiService
 import dev.mer.extension.model.Extension
 import dev.mer.runtime.ExtensionRuntime
+import dev.mer.storage.BookmarkDao
+import dev.mer.storage.BookmarkEntry
 import dev.mer.storage.HistoryDao
 import dev.mer.storage.HistoryEntry
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -40,7 +42,8 @@ data class BrowserUiState(
 class BrowserViewModel @Inject constructor(
     private val extensionRuntime: ExtensionRuntime,
     private val aiService: AiService,
-    private val historyDao: HistoryDao
+    private val historyDao: HistoryDao,
+    private val bookmarkDao: BookmarkDao
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(BrowserUiState())
@@ -133,6 +136,14 @@ class BrowserViewModel @Inject constructor(
         if (url.isNotBlank() && !url.startsWith("file://") && !url.startsWith("about:")) {
             viewModelScope.launch {
                 historyDao.insert(HistoryEntry(url = url, title = title))
+            }
+        }
+    }
+
+    fun addBookmark(url: String, title: String) {
+        if (url.isNotBlank() && !url.startsWith("file://") && !url.startsWith("about:")) {
+            viewModelScope.launch {
+                bookmarkDao.insert(BookmarkEntry(url = url, title = title))
             }
         }
     }

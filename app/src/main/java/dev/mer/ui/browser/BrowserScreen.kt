@@ -25,6 +25,7 @@ fun BrowserScreen(
     onNavigateToExtensions: () -> Unit,
     onNavigateToSettings: () -> Unit,
     onNavigateToHistory: () -> Unit,
+    onNavigateToBookmarks: () -> Unit,
     viewModel: BrowserViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsState()
@@ -79,6 +80,8 @@ fun BrowserScreen(
                 onAiClick = viewModel::toggleAiOverlay,
                 onSettingsClick = onNavigateToSettings,
                 onHistoryClick = onNavigateToHistory,
+                onBookmarksClick = onNavigateToBookmarks,
+                onAddBookmark = { url, _ -> viewModel.addBookmark(url, uiState.activeTab.title) },
                 modifier = Modifier.fillMaxWidth()
             )
 

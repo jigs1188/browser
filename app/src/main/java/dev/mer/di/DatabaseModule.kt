@@ -8,6 +8,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import dev.mer.storage.AppDatabase
+import dev.mer.storage.BookmarkDao
 import dev.mer.storage.ExtensionDao
 import dev.mer.storage.HistoryDao
 import javax.inject.Singleton
@@ -38,5 +39,10 @@ object DatabaseModule {
     @Provides
     fun provideHistoryDao(database: AppDatabase): HistoryDao {
         return database.historyDao()
+    }
+
+    @Provides
+    fun provideBookmarkDao(database: AppDatabase): BookmarkDao {
+        return database.bookmarkDao()
     }
 }

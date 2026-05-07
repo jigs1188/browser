@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import dev.mer.ui.bookmarks.BookmarksScreen
 import dev.mer.ui.browser.BrowserScreen
 import dev.mer.ui.extensions.ExtensionDetailScreen
 import dev.mer.ui.extensions.ExtensionListScreen
@@ -16,6 +17,7 @@ object Routes {
     const val EXTENSION_DETAIL = "extension/{extensionId}"
     const val SETTINGS = "settings"
     const val HISTORY = "history"
+    const val BOOKMARKS = "bookmarks"
 
     fun extensionDetail(id: String) = "extension/$id"
 }
@@ -41,6 +43,9 @@ fun AppNavigation() {
                 },
                 onNavigateToHistory = {
                     navController.navigate(Routes.HISTORY)
+                },
+                onNavigateToBookmarks = {
+                    navController.navigate(Routes.BOOKMARKS)
                 }
             )
             
@@ -85,6 +90,20 @@ fun AppNavigation() {
                 onUrlSelected = { url ->
                     navController.popBackStack()
                     // The BrowserScreen will receive the URL via savedStateHandle
+                    navController.currentBackStackEntry
+                        ?.savedStateHandle
+                        ?.set("navigateToUrl", url)
+                }
+            )
+        }
+
+        composable(Routes.BOOKMARKS) {
+            BookmarksScreen(
+                onNavigateBack = {
+                    navController.popBackStack()
+                },
+                onUrlSelected = { url ->
+                    navController.popBackStack()
                     navController.currentBackStackEntry
                         ?.savedStateHandle
                         ?.set("navigateToUrl", url)
